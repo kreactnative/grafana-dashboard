@@ -2,6 +2,17 @@ kubeEtcd:
   enabled: true
   service:
     enabled: true
+prometheus:
+  enabled: true
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: nfs-client
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
 grafana:
   sidecar:
     dashboards:
