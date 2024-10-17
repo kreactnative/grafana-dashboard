@@ -80,9 +80,4 @@ grafana:
       loki-dashboard-istio:
         url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio.json
         token: ""
-      loki-dashboard-istio-dev:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio-dev.json
-        token: ""
-      loki-dashboard-istio-qa:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio-qa.json
         token: ""
