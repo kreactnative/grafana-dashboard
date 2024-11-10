@@ -85,12 +85,12 @@ grafana:
         token: ""
     grafana-dashboards-loki:
       loki-log:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-log.json
+        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-prd/loki-log.json
         token: ""
     grafana-dashboards-istio:
       loki-dashboard-istio:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio.json
+        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-prd/loki-istio.json
         token: ""
       loki-dashboard-istio-prd:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio-prd.json
+        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-prd/loki-istio-prd.json
         token: ""
