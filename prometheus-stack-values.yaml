@@ -30,7 +30,7 @@ grafana:
       type: loki
       isDefault: false
       access: proxy
-      url: http://loki.monitoring:3100
+      url: http://loki.loki:3100
   plugins:
     - grafana-piechart-panel
     - grafana-worldmap-panel
@@ -91,9 +91,6 @@ grafana:
       loki-dashboard-istio:
         url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio.json
         token: ""
-      loki-dashboard-istio-dev:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio-dev.json
-        token: ""
-      loki-dashboard-istio-qa:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio-qa.json
+      loki-dashboard-istio-prd:
+        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio-prd.json
         token: ""

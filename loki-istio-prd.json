@@ -26,7 +26,7 @@
     "fiscalYearStartMonth": 0,
     "gnetId": 14876,
     "graphTooltip": 0,
-    "id": 55,
+    "id": 28,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -93,6 +93,7 @@
           "graphMode": "area",
           "justifyMode": "center",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
               "sum"
@@ -105,14 +106,14 @@
           "textMode": "value",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.0",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "sum by(host) (count_over_time({app=\"istio-ingressgateway\"}[$__interval] |~ \"-qa.nathalin.com\"))  ",
+            "expr": "sum by(host) (count_over_time({app=\"istio-ingressgateway\"}[$__interval] |~ \".nathalin.com\"))  ",
             "legendFormat": "",
             "queryType": "range",
             "refId": "A"
@@ -164,6 +165,7 @@
           "graphMode": "area",
           "justifyMode": "auto",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
               "sum"
@@ -176,7 +178,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.0",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -184,7 +186,7 @@
               "uid": "P8E80F9AEF21F6940"
             },
             "editorMode": "code",
-            "expr": "sum by (status_code) (count_over_time({app=\"istio-ingressgateway\"} |~ \"-qa.nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`  | __error__=\"\"\n | status_code =~\"0|2..|3..|4..|5..\" \n[$__interval])) ",
+            "expr": "sum by (status_code) (count_over_time({app=\"istio-ingressgateway\"} |~ \".nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`  | __error__=\"\"\n | status_code =~\"0|2..|3..|4..|5..\" \n[$__interval])) ",
             "legendFormat": "{{status_code}}",
             "queryType": "range",
             "refId": "A"
@@ -222,7 +224,7 @@
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "{app=\"istio-ingressgateway\"} |~ \"-qa.nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| line_format \"{{ .method }} request to https://{{.requested_server_name}}{{ .path }}  with HTTP status: {{.status_code }} duration {{.duration}} ms\"  | duration > 3000",
+            "expr": "{app=\"istio-ingressgateway\"} |~ \".nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| line_format \"{{ .method }} request to https://{{.requested_server_name}}{{ .path }}  with HTTP status: {{.status_code }} duration {{.duration}} ms\"  | duration > 3000",
             "hide": false,
             "queryType": "range",
             "refId": "B"
@@ -268,6 +270,7 @@
           "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
               "mean"
@@ -280,14 +283,14 @@
           "textMode": "value",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.0",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "count (sum by (downstream_remote_address) (count_over_time({app=\"istio-ingressgateway\"} |~ \"-qa.nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n[$__interval])))",
+            "expr": "count (sum by (downstream_remote_address) (count_over_time({app=\"istio-ingressgateway\"} |~ \".nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n[$__interval])))",
             "hide": false,
             "queryType": "range",
             "refId": "B"
@@ -457,7 +460,7 @@
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "quantile_over_time(0.95,{app=\"istio-ingressgateway\"}  |~ \"-qa.nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| unwrap duration \n|  __error__=\"\"  [$__interval]) by (host)",
+            "expr": "quantile_over_time(0.95,{app=\"istio-ingressgateway\"}  |~ \".nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| unwrap duration \n|  __error__=\"\"  [$__interval]) by (host)",
             "hide": false,
             "legendFormat": "95th percentile",
             "queryType": "range",
@@ -468,7 +471,7 @@
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "max by (host) (max_over_time({app=\"istio-ingressgateway\"}  |~ \"-qa.nathalin.com\" | pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>` \n| unwrap duration \n|  __error__=\"\"  [$__interval]))",
+            "expr": "max by (host) (max_over_time({app=\"istio-ingressgateway\"}  |~ \".nathalin.com\" | pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>` \n| unwrap duration \n|  __error__=\"\"  [$__interval]))",
             "hide": false,
             "legendFormat": "max latency",
             "queryType": "range",
@@ -586,7 +589,7 @@
               "uid": "P8E80F9AEF21F6940"
             },
             "editorMode": "code",
-            "expr": "sum by (status_code) (count_over_time({app=\"istio-ingressgateway\"} |~ \"-qa.nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`  | __error__=\"\"\n | status_code =~\"0|2..|3..|4..|5..\" \n[$__interval])) ",
+            "expr": "sum by (status_code) (count_over_time({app=\"istio-ingressgateway\"} |~ \".nathalin.com\"\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`  | __error__=\"\"\n | status_code =~\"0|2..|3..|4..|5..\" \n[$__interval])) ",
             "queryType": "range",
             "refId": "A"
           }
@@ -713,7 +716,7 @@
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "sum by (host) (sum_over_time({app=\"istio-ingressgateway\"} | json | status=200 | unwrap body_bytes_sent |  __error__=\"\" [$__interval] |~ \"-qa.nathalin.com\"))",
+            "expr": "sum by (host) (sum_over_time({app=\"istio-ingressgateway\"} | json | status=200 | unwrap body_bytes_sent |  __error__=\"\" [$__interval] |~ \".nathalin.com\"))",
             "hide": true,
             "legendFormat": "Bytes sent",
             "queryType": "range",
@@ -724,7 +727,7 @@
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "sum by (host) (sum_over_time({app=\"istio-ingressgateway\"} |~ \"-qa.nathalin.com\" | pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| status_code=200 \n| unwrap bytes_sent\n|  __error__=\"\" [$__interval]))",
+            "expr": "sum by (host) (sum_over_time({app=\"istio-ingressgateway\"} |~ \".nathalin.com\" | pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| status_code=200 \n| unwrap bytes_sent\n|  __error__=\"\" [$__interval]))",
             "hide": false,
             "legendFormat": "Bytes sent",
             "queryType": "range",
@@ -800,6 +803,7 @@
           "graphMode": "area",
           "justifyMode": "auto",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
               "lastNotNull"
@@ -812,14 +816,14 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.0",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
               "uid": "$datasource"
             },
             "editorMode": "code",
-            "expr": "max_over_time({app=\"istio-ingressgateway\"} |~ \"-qa.nathalin.com\"\n!~ `.ico|.svg|.css|.png|.txt|.js|.xml`\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| unwrap duration\n| status_code = 200 and path != \"/\" \n| __error__=\"\" [1h]) by (path)",
+            "expr": "max_over_time({app=\"istio-ingressgateway\"} |~ \".nathalin.com\"\n!~ `.ico|.svg|.css|.png|.txt|.js|.xml`\n| pattern `<_> \"<method> <path> <protocol>\" <status_code> <response_flags> <response_code_details> <connection_termination_details> \"<failure_reason>\" <bytes_received> <bytes_sent> <duration> <upstream_time> \"<forward_for>\" \"<agent>\" \"<req_id>\" \"<authority>\" \"<upstream_host>\" <upstream_cluster> <upstream_local_address> <downstream_local_address> <downstream_remote_address> <requested_server_name> <route_name>`\n| unwrap duration\n| status_code = 200 and path != \"/\" and duration >= 3000\n| __error__=\"\" [1h]) by (path)",
             "hide": false,
             "legendFormat": "{{path}} ",
             "queryType": "range",
@@ -876,7 +880,7 @@
       ]
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {
@@ -893,7 +897,8 @@
       ]
     },
     "timezone": "",
-    "title": "Nathalin QA Performance",
-    "version": 20,
+    "title": "Nathalin dev Performance",
+    "uid": "f9f4bcc7-7e66-4a38-959f-fb0a33a4f111",
+    "version": 1,
     "weekStart": ""
   }
