@@ -74,10 +74,9 @@ grafana:
         token: ""
     grafana-dashboards-loki:
       loki-log:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-log.json
+        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/arm-layer-stack/loki-log.json
         token: ""
     grafana-dashboards-istio:
       loki-dashboard-istio:
-        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/nt-dev-qa/loki-istio.json
-        token: ""
+        url: https://raw.githubusercontent.com/kreactnative/grafana-dashboard/arm-layer-stack/loki-istio.json
         token: ""
